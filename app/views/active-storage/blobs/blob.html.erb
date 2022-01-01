@@ -1,0 +1,13 @@
+< figure class="attachment aattachment --<%= blob.representable? ?"preview" : "file" %> attachment --<% blob.filename.extension %>"> 
+<% if blob.representable? %> 
+<%= image_tag blob.representation(rezize_to_limit : local_assigns [:in_gallery]? [800,800] :[1024,768]) %> 
+<% end %> 
+<figcaption class ="attachment_caption">
+<% if caption =blob.try(:caption) %> 
+<%= caption %>
+<% else %>
+<span class ="attachment_name "> <% blob.filename %></span>
+<span class = "attachment_size"> <%= number_to_human_size blob._size %> </span> 
+<% end %>
+</figcaption>
+</figure>
